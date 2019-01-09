@@ -1,6 +1,6 @@
 # Projet Manga
 
-+ Bonnet Leonard
++ Bonnet Léonard
 + Criquet Sébastien
 
 > "Database" (files in json) in /back/db
