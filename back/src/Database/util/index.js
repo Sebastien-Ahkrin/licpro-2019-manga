@@ -21,9 +21,6 @@ console.log('test', transform(name), transform(season), transform(episode))
  */
 const transform = value => ((typeof parseInt(value, 10) === 'number') && (value <= 9) ? `0${ value }` : value.replace(/[ ]/g, '-'))
 
-
-console.log(stringify('Salut a', 1, 1))
-
 module.exports = {
   transform, stringify, path
 }
