@@ -12,7 +12,7 @@ module.exports = {
   create: {
     createManga
   },
-  delete: {
+  deleteM: {
     deleteManga
   },
   update: {

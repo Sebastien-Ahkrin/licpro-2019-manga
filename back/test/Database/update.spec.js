@@ -7,7 +7,7 @@ const {
   create: { 
     createManga 
   },
-  delete: {
+  deleteM: {
     deleteManga
   },
   update: {
