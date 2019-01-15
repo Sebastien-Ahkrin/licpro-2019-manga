@@ -10,7 +10,7 @@ const {
   delete: {
     deleteManga
   }
-} = require('../src/Database')
+} = require('../../src/Database')
 
 describe('Database#create', () => {
   describe('createManga()', () => {

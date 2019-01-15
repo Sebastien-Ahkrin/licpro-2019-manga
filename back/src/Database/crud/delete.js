@@ -1,4 +1,4 @@
-const { path, stringify, transform } = require('../util')
+const { path, transform } = require('../util')
 
 const { promisify } = require('util')
 const rimraf = require('rimraf')

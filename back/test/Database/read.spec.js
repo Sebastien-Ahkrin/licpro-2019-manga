@@ -6,7 +6,7 @@ const {
     getSeasons, 
     getMangas 
   }
-} = require('../src/Database')
+} = require('../../src/Database')
 
 describe('Database#read', () => {
   describe('getEpisode()', () => {

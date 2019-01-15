@@ -13,7 +13,7 @@ const {
   update: {
     updateEpisode
   }
-} = require('../src/Database')
+} = require('../../src/Database')
 
 describe('Database#update', () => {
   describe('updateEpisode()', () => {
