@@ -11,7 +11,7 @@ const {
 describe('Database#read', () => {
   describe('getEpisode()', () => {
     it('should return the grade of a episode', async () => {
-      assert.equal(await getEpisode('No Game No Life', 1, 1), "{\r\n  \"grade\": 8\r\n}")
+      assert.equal(await getEpisode('No Game No Life', 1, 1), "{\"grade\":8}")
     })
   })
 
