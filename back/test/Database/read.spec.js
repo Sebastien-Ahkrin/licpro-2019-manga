@@ -26,10 +26,4 @@ describe('Database#read', () => {
       assert.deepStrictEqual(await getSeasons('Goblin Slayer'), ['Season-01'])
     })
   })
-
-  describe('create#createManga()', () => {
-    it('should create a new mangas with grade: 7', async () => {
-      //Test this when you can remove a new file
-    })
-  })
 })
