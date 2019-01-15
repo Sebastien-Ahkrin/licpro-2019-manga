@@ -5,7 +5,7 @@
   "main": "src",
   "scripts": {
     "start": "node src/",
-    "test": "mocha ./test/**/*.spec.js"
+    "test": "mocha ./__test__/**/*.spec.js"
   },
   "author": "",
   "license": "ISC",

@@ -33,6 +33,8 @@ server.get("/mangas/:name/:season", async function ({ params }, res) {
 })
 
 server.get("/mangas/:name/:season/:episode", async function ({ params }, res) {
+  console.log(params.name, params.season, params.episode)
+
   const episode = await read.getEpisode(params.name, params.season, params.episode)
   res.json(episode)
 })

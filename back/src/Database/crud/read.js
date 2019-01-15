@@ -18,6 +18,8 @@ const getMangas = () => readDirAsync(path)
  */
 const getSeasons = name => readDirAsync(`${ path }/${ transform(name) }`)
 
+//TODO getEpisodes qui donne la liste de tout les épisodes
+
 /**
  * Get the json of the episode
  * @param { string } name 
