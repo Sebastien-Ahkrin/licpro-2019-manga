@@ -1,16 +1,9 @@
 const server = require('./Server')
+const { use } = require('./Middleware')
+const bodyParser = require('body-parser')
 const { read, create, deleteM, update} = require('./Database')
 
-/*
-[GET] /mangas => Donne tous les mangas
-[GET] /mangas/:name => Donne toutes les saisons d'un mangas
-[GET] /mangas/:name/:season => Donne la liste de tout les épisodes
-[GET] /mangas/:name/:season/:episode => Donne la note d'un episode
-
-[DELETE] /mangas/:name => Supprimer un mangas
-[PUT] /mangas/:name/:season/:episode | DATA dans le header ? => Creer un mangas
-[POST] /mangas/:name/:season/:episode | DATA dans le header ?  => Modifie un mangas
-*/
+use(bodyParser.json())
 
 /**
  * Get all the mangas
@@ -47,20 +40,23 @@ server.get("/mangas/:name/:season/:episode", async function ({ params }, res) {
 /**
  * Delete a manga from its name
  */
-server.delete("/mangas/:name", async function ({ params }, _) {
+server.delete("/mangas/:name", async function ({ params }, res) {
   await deleteM.deleteManga(params.name)
+  res.sendStatus(200)
 })
 
 /**
  * Create a manga from its name, season and episode
  */
-server.put("/mangas/:name/:season/:episode", async function ({ params }, _) {
-  await create.createManga(params.name, params.season, params.episode)
+server.put("/mangas/:name/:season/:episode", async function ({ params, body }, res) {
+  await create.createManga(params.name, params.season, params.episode, body)
+  res.sendStatus(200)
 })
 
 /**
  * Update a manga from its name, season and episode
  */
-server.post("/mangas/:name/:season/:episode", async function ({params }, _) {
-  await update.updateEpisode(params.name, params.season, params.episode)
+server.post("/mangas/:name/:season/:episode", async function ({ params, body }, res) {
+  await update.updateEpisode(params.name, params.season, params.episode, body)
+  res.sendStatus(200)
 })
