@@ -15,13 +15,15 @@ const {
   }
 } = require('../../src/Database')
 
-describe('[DELETE]', () => {
-  describe('/mangas/:name', () => {
-    it('Should remove a manga', () => {
-      chai.request(app).delete('/api/mangas/No Game No Life').then(async ({ status }) => {
-        assert.equal(status, 200)
-        assert.deepStrictEqual(await getMangas(), ['Death-Note', 'Goblin-Slayer', 'Shingeki-No-Kyojin' ])
-        await createManga('No Game No Life', 1, 1, { grade: 8 })
+describe('Routes [/api]', () => {
+  describe('[DELETE]', () => {
+    describe('/mangas/:name', () => {
+      it('Should remove a manga', () => {
+        chai.request(app).delete('/api/mangas/No Game No Life').then(async ({ status }) => {
+          assert.equal(status, 200)
+          assert.deepStrictEqual(await getMangas(), ['Death-Note', 'Goblin-Slayer', 'Shingeki-No-Kyojin' ])
+          await createManga('No Game No Life', 1, 1, { grade: 8 })
+        })
       })
     })
   })

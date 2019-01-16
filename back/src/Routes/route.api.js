@@ -50,7 +50,7 @@ router.delete("/mangas/:name", async function ({ params }, res) {
  */
 router.put("/mangas/:name/:season/:episode", async function ({ params, body }, res) {
   await create.createManga(params.name, params.season, params.episode, body)
-  res.sendStatus(200)
+  res.json(await read.getEpisode(params.name, params.season, params.episode))
 })
 
 /**
@@ -58,7 +58,7 @@ router.put("/mangas/:name/:season/:episode", async function ({ params, body }, r
  */
 router.post("/mangas/:name/:season/:episode", async function ({ params, body }, res) {
   await update.updateEpisode(params.name, params.season, params.episode, body)
-  res.sendStatus(200)
+  res.json(read.getEpisode(params.name, params.season, params.episode))
 })
 
 module.exports = router
