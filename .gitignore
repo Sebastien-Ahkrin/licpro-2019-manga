@@ -3,3 +3,4 @@ back/node_modules
 front/.idea
 back/.idea
 .idea
+db/*
