@@ -24,7 +24,7 @@ const use = middleware => server.use(middleware)
  * 
  * uses(middlewares)
  * 
- * @param { Function } middlewares 
+ * @param { Array } middlewares 
  */
 const uses = middlewares => middlewares.forEach(middleware => use(middleware))
 
