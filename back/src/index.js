@@ -21,20 +21,25 @@ server.get("/mangas", async function ({ params }, res) {
 })
 
 /**
- * 
+ * Get all the seasons from a manga name
  */
 server.get("/mangas/:name", async function ({ params }, res) {
-  const seasons = await read.getSeasons(req.params.name)
+  const seasons = await read.getSeasons(params.name)
   res.json(seasons)
 })
 
+/**
+ * Get all the episodes from a manga name and a season
+ */
 server.get("/mangas/:name/:season", async function ({ params }, res) {
-
+  const episodes = await read.getEpisodes(params.name, params.season)
+  res.json(episodes)
 })
 
+/**
+ * Get the episode from a manga name, a season and an episode number
+ */
 server.get("/mangas/:name/:season/:episode", async function ({ params }, res) {
-  console.log(params.name, params.season, params.episode)
-
   const episode = await read.getEpisode(params.name, params.season, params.episode)
   res.json(episode)
 })

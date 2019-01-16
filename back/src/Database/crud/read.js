@@ -18,7 +18,12 @@ const getMangas = () => readDirAsync(path)
  */
 const getSeasons = name => readDirAsync(`${ path }/${ transform(name) }`)
 
-//TODO getEpisodes qui donne la liste de tout les épisodes
+/**
+ * Return the list of all the episodes from a manga and a season
+ * @param { string } name 
+ * @param { string } season 
+ */
+const getEpisodes = (name, season) => readDirAsync(`${ path }/${ transform(name) }/Season-${ transform(season) }`)
 
 /**
  * Get the json of the episode
@@ -29,5 +34,5 @@ const getSeasons = name => readDirAsync(`${ path }/${ transform(name) }`)
 const getEpisode = (name, season, episode) => readFileAsync(stringify(name, season, episode), 'utf8')
 
 module.exports = {
-  getMangas, getEpisode, getSeasons
+  getMangas, getEpisode, getSeasons, getEpisodes
 }
