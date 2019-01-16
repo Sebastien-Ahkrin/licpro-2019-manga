@@ -15,7 +15,7 @@ const { read, create, deleteM, update} = require('./Database')
 /**
  * Get all the mangas
  */
-server.get("/mangas", async function ({ params }, res) {
+server.get("/mangas", async function (_, res) {
   const mangas = await read.getMangas()
   res.json(mangas)
 })
@@ -44,14 +44,23 @@ server.get("/mangas/:name/:season/:episode", async function ({ params }, res) {
   res.json(episode)
 })
 
-server.delete("/mangas/:name", async function (req, res) {
-  
+/**
+ * Delete a manga from its name
+ */
+server.delete("/mangas/:name", async function ({ params }, _) {
+  await deleteM.deleteManga(params.name)
 })
 
-server.put("/mangas/:name/:season/:episode", async function (req, res) {
-  
+/**
+ * Create a manga from its name, season and episode
+ */
+server.put("/mangas/:name/:season/:episode", async function ({ params }, _) {
+  await create.createManga(params.name, params.season, params.episode)
 })
 
-server.post("/mangas/:name/:season/:episode", async function (req, res) {
-  
+/**
+ * Update a manga from its name, season and episode
+ */
+server.post("/mangas/:name/:season/:episode", async function ({params }, _) {
+  await update.updateEpisode(params.name, params.season, params.episode)
 })
