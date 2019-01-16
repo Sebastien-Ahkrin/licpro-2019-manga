@@ -1,11 +1,11 @@
 const { stringify, transform, path } = require('../util')
 
 const { promisify } = require('util')
-const fs = require('fs-extra')
+const fs = require('fs')
 
 //Transform this method in a Promise
 const createFile = promisify(fs.writeFile)
-const mkdir = promisify(fs.ensureDir)
+const mkdir = promisify(fs.mkdir)
 
 /**
  * Create a file with this object : { grade: x }

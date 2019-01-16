@@ -8,6 +8,7 @@ const path = `${ __dirname }/../../../db`
  * @param { number } episode 
  */
 const stringify = (name, season, episode) => `${ path }/${ transform(name) }/Season-${ transform(season) }/Episode-${ transform(episode) }.json`
+
 /**
  * Remove every space and remplace it by a -. (if its a string)
  * If its a number just add "0" if the number is less than 10.
