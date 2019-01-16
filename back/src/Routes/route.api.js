@@ -56,8 +56,9 @@ router.put("/mangas/:name/:season/:episode", async function ({ params, body }, r
 /**
  * Update a manga from its name, season and episode
  */
-router.post("/mangas/:name/:season/:episode", async function ({params }, _) {
-  await update.updateEpisode(params.name, params.season, params.episode)
+router.post("/mangas/:name/:season/:episode", async function ({ params, body }, res) {
+  await update.updateEpisode(params.name, params.season, params.episode, body)
+  res.sendStatus(200)
 })
 
 module.exports = router
