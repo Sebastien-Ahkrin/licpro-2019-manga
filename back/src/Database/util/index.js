@@ -14,7 +14,7 @@ const stringify = (name, season, episode) => `${ path }/${ transform(name) }/Sea
  * If its a number just add "0" if the number is less than 10.
  * @param { string | number } value 
  */
-const transform = value => ((typeof parseInt(value, 10) === 'number') && (value <= 9) ? `0${ value }` : value.replace(/[ ]/g, '-'))
+const transform = value => ((typeof parseInt(value, 10) === 'number') && (value <= 9) ? `0${ (value <= 0 ? 1 : value) }` : value.replace(/[ ]/g, '-'))
 
 module.exports = {
   transform, stringify, path

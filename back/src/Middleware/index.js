@@ -1,4 +1,4 @@
-const server = require('../Server')
+const { app } = require('../Server')
 
 /**
  * Add a middleware to the server
@@ -10,7 +10,7 @@ const server = require('../Server')
  * 
  * @param { Function } middleware 
  */
-const use = middleware => server.use(middleware)
+const use = middleware => app.use(middleware)
 
 /**
  * Add more of one middleware to the server
