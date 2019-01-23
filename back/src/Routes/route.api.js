@@ -91,4 +91,15 @@ router.post("/mangas/:name/:season/:episode", ({ params, body }, res) => {
   })
 })
 
+/*--------------------------*/
+router.get("/episodes", (_, res) => {
+  read.listAll().then(mangas => {
+    res.json({
+      mangas
+    })
+  }).catch(error => {
+    res.send(error).status(404)
+  })
+})
+
 module.exports = router
