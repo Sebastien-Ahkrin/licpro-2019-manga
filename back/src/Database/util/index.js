@@ -1,5 +1,5 @@
 //Path of db folder
-const path = `${ __dirname }/../../../__test__/db`
+const path = `${ __dirname }/../../../__test__/data`
 
 /**
  * Return a new string from this uuid

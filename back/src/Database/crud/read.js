@@ -1,4 +1,4 @@
-const { path } = require('../util')
+const { path, stringify } = require('../util')
 
 const { promisify } = require('util')
 const fs = require('fs')
@@ -17,9 +17,9 @@ const listAll = () => readDirAsync(path)/*.forEach(file => {
 
 /**
  * Get one episode
- * @param {*} id 
+ * @param { string } id 
  */
-const listOne = (id) => readFileAsync(`${ path }/${ id }.json`)
+const listOne = (id) => readFileAsync(stringify(id))
 
 
 module.exports = {
