@@ -7,13 +7,9 @@ chai.use(http)
 const { app } = require('../../src')
 const uuid = require('uuidv4')
 
-const {
-  create: {
-    createManga
-  }
-} = require('../../src/Database')
-
+const { read: { listAll }, create: { createManga }, deleteM: { deleteManga } } = require('../../src/Database')
 describe('Routes [/api]', () => {
+
   describe('[PUT]', () => {
     describe('/episodes/:uuid', () => {
       it('Should create a manga', async () => {

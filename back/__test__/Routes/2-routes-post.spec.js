@@ -5,7 +5,7 @@ const http = require('chai-http')
 chai.use(http)
 
 const { app } = require('../../src')
-const { read: { listOne }} = require('../../src/Database')
+const { read: { listOne, listAll }, deleteM: { deleteManga }} = require('../../src/Database')
 
 describe('Routes [/api]', () => {
   describe('[POST]', () => {
