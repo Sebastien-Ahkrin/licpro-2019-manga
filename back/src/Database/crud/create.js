@@ -1,4 +1,4 @@
-const { stringify, transform, path } = require('../util')
+const { path, stringify } = require('../util')
 
 const { promisify } = require('util')
 const fs = require('fs')
@@ -8,16 +8,20 @@ const createFile = promisify(fs.writeFile)
 const mkdir = promisify(fs.mkdir)
 
 /**
- * Create a file with this object : { "grade": x }
- * x = number
- * @param { string } name 
- * @param { number } season 
- * @param { number } episode 
+ * Create a file with this object : 
+ * 
+ * { 
+ *   "name": { string },
+ *   "grade": { number },
+ *   "code": { string }
+ * }
+ * 
  * @param { object } data
  */
-const createManga = async (name, season, episode, data) => {
-  await mkdir(`${ path }/${ transform(name) }/Season-${ transform(season) }`, { recursive: true })
-  await createFile(stringify(name, season, episode), JSON.stringify(data))
+const createManga = async (data) => {
+  await mkdir(path, { recursive: true })
+  await createFile(stringify(data.id), JSON.stringify(data))
+  return data.id
 }
 
 module.exports = {
