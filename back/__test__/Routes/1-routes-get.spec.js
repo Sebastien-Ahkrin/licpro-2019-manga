@@ -33,58 +33,37 @@ describe('Routes [/api]', () => { //important
         }) // deepEqual pour les objets
       })
     })*/
+    let id1
+    let id2
 
-    /*const data = await listAll()
-    data.forEach(async ep => await deleteManga(ep.replace('.json', '')))
-
-    */
-
-    /*before(async () => {
-      const id1 = await createManga({ name: "Death Note", grade: 8, code: "S01E01", id: uuid() })
-      const id2 = await createManga({ name: "Death Note", grade: 8, code: "S01E02", id: uuid() })
+    before(async () => {
+      id1 = await createManga({ name: "Death Note", grade: 8, code: "S01E01", id: uuid() })
+      id2 = await createManga({ name: "Death Note", grade: 8, code: "S01E02", id: uuid() })
     })
 
     after(async () => {
       const data = await listAll()
       data.forEach(async ep => await deleteManga(ep.replace('.json', '')))
-    })*/
+    })
 
     describe('/episodes', () => {
-      it('Should return a list of all the episodes details', () => {
-        chai.request(app).get('/api/episodes').then(({ status, body }) => {
-          //assert.equal(status, 200)
-          console.log(body)
-          //const ep1 = await listOne()
-          //assert.deepStrictEqual()
+      it('Should return a list of the details of all the episodes', () => {
+        chai.request(app).get('/api/episodes').then(async ({ status, body }) => {
+          assert.equal(status, 200)
+          const data = [{ name: "Death Note", grade: 8, code: "S01E01", id: id1 }, { name: "Death Note", grade: 8, code: "S01E02", id: id2 }]
+          assert.deepStrictEqual(body, data)
         }).catch(error => console.log(error))
       })
     })
-  
-    /*describe('/mangas/:name', () => {
-      it('Should return a list of seasons', () => {
-        chai.request(app).get('/api/mangas/No Game No Life').then(({ status, body }) => {
+
+    describe('/episodes/:uuid', () => {
+      it('Should return the details of the episode in parameters', () => {
+        chai.request(app).get(`/api/episodes/${ id1 }`).then(async ({ status, body }) => {
           assert.equal(status, 200)
-          assert.deepStrictEqual(body, [ 'Season-01' ])
-        })
+          const data = { name: "Death Note", grade: 8, code: "S01E01", id: id1 }
+          assert.deepEqual(body, data)
+        }).catch(error => console.log(error))
       })
     })
-  
-    describe('/mangas/:name/:season', () => {
-      it('Should return a list of episodes', () => {
-        chai.request(app).get('/api/mangas/No Game No Life/1').then(({ status, body }) => {
-          assert.equal(status, 200)
-          assert.deepStrictEqual(body, [ 'Episode-01.json' ])
-        })
-      })
-    })
-  
-    describe('/mangas/:name/:season/:episode', () => {
-      it('Should return a episode 1', () => {
-        chai.request(app).get('/api/mangas/No Game No Life/1/1').then(({ status, body }) => {
-          assert.equal(status, 200)
-          assert.equal(body, JSON.stringify({ grade: 8 }))
-        })
-      })
-    })*/
   })
 })
