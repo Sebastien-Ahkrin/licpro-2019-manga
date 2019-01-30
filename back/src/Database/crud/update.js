@@ -8,9 +8,7 @@ const createFile = promisify(fs.writeFile)
 
 /**
  * Update a episode with the new data
- * @param { string } name 
- * @param { number } season 
- * @param { number } episode 
+ * @param { string } uuid 
  * @param { object } data 
  */
 const updateEpisode = async (uuid, data) => await createFile(stringify(uuid), JSON.stringify(data))

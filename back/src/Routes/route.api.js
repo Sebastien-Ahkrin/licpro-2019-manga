@@ -26,9 +26,9 @@ router.post('/episodes', async ({ body }, response) => {
   body.id = uuid()
   try {
     await createManga(body)
-    response.send(body).status(201)
+    response.status(201).json(body)
   } catch (error) {
-    response.send(`Error: ${ error }`).status(500)
+    response.status(500).send(`Error: ${ error }`)
   }
 })
 
@@ -36,15 +36,23 @@ router.post('/episodes', async ({ body }, response) => {
 router.delete('/episodes/:uuid', async ({ params }, response) => {
   try {
     await deleteManga(params.uuid)
-    response.send({ id: params.uuid, status: 'deleted' }).status(200)
+    response.status(200).send({ id: params.uuid, status: 'deleted' })
   } catch (error) {
-    response.send(`Error: ${ error }`).status(500)
+    response.status(500).send(`Error: ${ error }`)
   }
 })
 
 //Update a episode
-router.put('/episodes/:uuid', ({ params }, response) => {
+router.put('/episodes/:uuid', async ({ params, body }, response) => {
+  try {
+    await updateEpisode(params.uuid, body)
+    const data = JSON.parse(await listOne(params.uuid))
+    data.id = params.uuid
 
+    response.status(200).json(data)
+  } catch (error) {
+    response.status(500).send(`Error: ${ error }`)
+  }
 })
 
 module.exports = router

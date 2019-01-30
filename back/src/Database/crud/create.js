@@ -21,6 +21,7 @@ const mkdir = promisify(fs.mkdir)
 const createManga = async (data) => {
   await mkdir(path, { recursive: true })
   await createFile(stringify(data.id), JSON.stringify(data))
+  return data.id
 }
 
 module.exports = {
