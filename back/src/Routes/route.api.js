@@ -26,15 +26,20 @@ router.post('/episodes', async ({ body }, response) => {
   body.id = uuid()
   try {
     await createManga(body)
-    response.send(body).status(200)
+    response.send(body).status(201)
   } catch (error) {
     response.send(`Error: ${ error }`).status(500)
   }
 })
 
 //Delete a episode
-router.delete('/episodes/:uuid', ({ params }, response) => {
-
+router.delete('/episodes/:uuid', async ({ params }, response) => {
+  try {
+    await deleteManga(params.uuid)
+    response.send({ id: params.uuid, status: 'deleted' }).status(200)
+  } catch (error) {
+    response.send(`Error: ${ error }`).status(500)
+  }
 })
 
 //Update a episode
