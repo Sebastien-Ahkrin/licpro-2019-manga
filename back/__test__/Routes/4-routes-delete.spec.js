@@ -1,12 +1,11 @@
-const assert = require('assert')
+const { app } = require('../../src')
+const { create: { createManga }, read: { listAll }, deleteM: { deleteManga }} = require('../../src/Database')
 
+const assert = require('assert')
 const uuid = require('uuidv4')
 const chai = require('chai')
 const http = require('chai-http')
 chai.use(http)
-
-const { app } = require('../../src')
-const { create: { createManga }, read: { listAll }, deleteM: { deleteManga }} = require('../../src/Database')
 
 describe('Routes [/api]', () => {
   describe('[DELETE]', () => {
