@@ -3,4 +3,4 @@ back/node_modules
 front/.idea
 back/.idea
 .idea
-back/__test__/db
+back/__test__/data
