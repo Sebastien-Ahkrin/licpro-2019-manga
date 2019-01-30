@@ -13,7 +13,7 @@ const createFile = promisify(fs.writeFile)
  * @param { number } episode 
  * @param { object } data 
  */
-const updateEpisode = async (name, season, episode, data) => await createFile(stringify(name, season, episode), JSON.stringify(data))
+const updateEpisode = async (uuid, data) => await createFile(stringify(uuid), JSON.stringify(data))
 
 module.exports = {
   updateEpisode
