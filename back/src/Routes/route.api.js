@@ -12,16 +12,26 @@ const uuid = require('uuidv4')
 app.use(bodyParser.json())
 
 //ListAll
-router.get('/episodes', (request, response) => {
-
+router.get('/episodes', async (_, response) => {
+  try {
+    const list = await listAll()
+    const data = list.map(async ep => await listOne(ep.replace(".json", "")))
+    response.json((await Promise.all(data)).map(episode => JSON.parse(episode)))
+  } catch (error) {
+    response.status(500).send(`Error: ${ error }`)
+  }
 })
 
 //ListOne
-router.get('/episodes/:uuid', ({ params }, response) => {
-
+router.get('/episodes/:uuid', async ({ params }, response) => {
+  try {
+    response.json(JSON.parse(await listOne(params.uuid)))
+  } catch (error) {
+    response.status(500).send(`Error: ${ error }`)
+  }
 })
 
-//Create a episode
+//Create an episode
 router.post('/episodes', async ({ body }, response) => {
   body.id = uuid()
   try {

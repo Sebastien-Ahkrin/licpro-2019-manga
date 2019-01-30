@@ -7,13 +7,11 @@ const fs = require('fs')
 const readFileAsync = promisify(fs.readFile)
 const readDirAsync = promisify(fs.readdir)
 
-/* --------------------------------------------------------------*/
+
 /**
  * Get all the episodes
  */
-const listAll = () => readDirAsync(path)/*.forEach(file => {
-  listOne(file)
-})*/
+const listAll = () => readDirAsync(path)
 
 /**
  * Get one episode
