@@ -50,8 +50,8 @@ describe('Routes [/api]', () => { //important
       it('Should return a list of the details of all the episodes', () => {
         chai.request(app).get('/api/episodes').then(async ({ status, body }) => {
           assert.equal(status, 200)
-          const data = [{ name: "Death Note", grade: 8, code: "S01E01", id: id1 }, { name: "Death Note", grade: 8, code: "S01E02", id: id2 }]
-          assert.deepStrictEqual(body, data)
+          const data = [{ name: "Death Note", grade: 8, code: "S01E02", id: id2 }, { name: "Death Note", grade: 8, code: "S01E01", id: id1 }]
+          assert.deepEqual(body, data)
         }).catch(error => console.log(error))
       })
     })
