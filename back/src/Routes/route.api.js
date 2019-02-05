@@ -8,8 +8,10 @@ const {
 const { router, app } = require('../Server')
 const bodyParser = require('body-parser')
 const uuid = require('uuidv4')
+const cors = require('cors')
 
 app.use(bodyParser.json())
+app.use(cors())
 
 //ListAll
 router.get('/episodes', async (_, response) => {
