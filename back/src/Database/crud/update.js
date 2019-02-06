@@ -7,7 +7,7 @@ const fs = require('fs')
 const createFile = promisify(fs.writeFile)
 
 /**
- * Update a episode with the new data
+ * Update an episode with the new data
  * @param { string } uuid 
  * @param { object } data 
  */

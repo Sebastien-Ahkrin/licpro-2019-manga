@@ -6,7 +6,7 @@ const rimraf = require('rimraf')
 const unlink = promisify(rimraf)
 
 /**
- * Delete a mangas with her name
+ * Delete a manga with his name
  * @param { string } uuid 
  */
 const deleteManga = uuid => unlink(stringify(uuid))

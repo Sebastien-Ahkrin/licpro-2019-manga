@@ -44,7 +44,7 @@ router.post('/episodes', async ({ body }, response) => {
   }
 })
 
-//Delete a episode
+//Delete an episode
 router.delete('/episodes/:uuid', async ({ params }, response) => {
   try {
     await deleteManga(params.uuid)
@@ -54,7 +54,7 @@ router.delete('/episodes/:uuid', async ({ params }, response) => {
   }
 })
 
-//Update a episode
+//Update an episode
 router.put('/episodes/:uuid', async ({ params, body }, response) => {
   try {
     await updateEpisode(params.uuid, body)
