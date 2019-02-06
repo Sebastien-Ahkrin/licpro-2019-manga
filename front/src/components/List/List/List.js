@@ -11,6 +11,7 @@ class List extends Component {
   constructor () {
     super()
     this.state = { episodes: '' }
+    this.delete.bind(this)
   }
 
   componentDidMount () {
@@ -21,7 +22,13 @@ class List extends Component {
     })
   }
 
-  render() {
+  delete (id) {
+    axios.delete(`${ api }/episodes/${ id }`).then(({ data }) => {
+      this.setState(({ episodes }) => ({ episodes: episodes.filter((episode) => episode.id !== id) }))
+    }).catch(console.error)
+  }
+
+  render () {
     if(this.state.error) return (<div className='error'>Error: { this.state.error.message }</div>)
     if(this.state.episodes === '') return (<div></div>)
     
@@ -30,14 +37,15 @@ class List extends Component {
         <table className='table'>
           <thead>
             <tr>
-              <th scope='col'>ID</th>
-              <th scope='col'>Serie</th>
+              <th scope='col'>Série</th>
               <th scope='col'>Saison</th>
               <th scope='col'>Episode</th>
+              <th scope='col'>Note</th>
+              <th scope='col'></th>
             </tr>
           </thead>
           <tbody>
-            { this.state.episodes.map(episode => (<ListItem key={ episode.id } episode={ episode }/>)) } 
+            { this.state.episodes.map(episode => (<ListItem key={ episode.id } episode={ episode } callback={ () => this.delete(episode.id) }/>)) } 
           </tbody> 
         </table>
       </div>
