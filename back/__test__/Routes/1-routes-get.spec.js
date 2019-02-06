@@ -9,36 +9,24 @@ const uuid = require('uuidv4')
 
 const {
   read: {
-    listAll,
-    listOne
+    listAll
   },
   create: {
     createManga
   },
   deleteM: { 
     deleteManga
-  },
-  update: {
-    updateEpisode
   }
 } = require('../../src/Database')
 
-describe('Routes [/api]', () => { //important
-  describe('[GET]', async () => { //important
-    /*describe('/mangas', () => { // route testée
-      it('Should return a list of mangas', () => { // desc
-        chai.request(app).get('/api/mangas').then(({ status, body }) => {
-          assert.equal(status, 200) // toujours tester le status
-          assert.deepStrictEqual(body, [ 'Goblin-Slayer', 'No-Game-No-Life', 'Shingeki-No-Kyojin' ]) // deepStrictEqual pour les listes
-        }) // deepEqual pour les objets
-      })
-    })*/
-    let id1
-    let id2
+describe('Routes [/api]', () => {
+  describe('[GET]', async () => {
+    const id = uuid()
+    const id2 = uuid()
 
     before(async () => {
-      id1 = await createManga({ name: "Death Note", grade: 8, code: "S01E01", id: uuid() })
-      id2 = await createManga({ name: "Death Note", grade: 8, code: "S01E02", id: uuid() })
+      await createManga({ name: "Death Note", grade: 8, code: "S01E01", id: id })
+      await createManga({ name: "Death Note", grade: 7, code: "S01E02", id: id2 })
     })
 
     after(async () => {
@@ -46,22 +34,25 @@ describe('Routes [/api]', () => { //important
       data.forEach(async ep => await deleteManga(ep.replace('.json', '')))
     })
 
+    // Test ListAll()
     describe('/episodes', () => {
-      it('Should return a list of the details of all the episodes', () => {
-        chai.request(app).get('/api/episodes').then(async ({ status, body }) => {
+      it('Should return a list of the details of all the episodes', (done) => {
+        chai.request(app).get('/api/episodes').then(({ status, body }) => {
           assert.equal(status, 200)
-          const data = [{ name: "Death Note", grade: 8, code: "S01E02", id: id2 }, { name: "Death Note", grade: 8, code: "S01E01", id: id1 }]
-          assert.deepEqual(body, data)
+          assert.deepEqual(body.length, 2)
+          done()
         }).catch(error => console.log(error))
       })
     })
 
+    // Test ListOne()
     describe('/episodes/:uuid', () => {
-      it('Should return the details of the episode in parameters', () => {
-        chai.request(app).get(`/api/episodes/${ id1 }`).then(async ({ status, body }) => {
+      it('Should return the details of the episode in parameters', (done) => {
+        chai.request(app).get(`/api/episodes/${ id }`).then(({ status, body }) => {
           assert.equal(status, 200)
-          const data = { name: "Death Note", grade: 8, code: "S01E01", id: id1 }
+          const data = { name: "Death Note", grade: 8, code: "S01E01", id: id }
           assert.deepEqual(body, data)
+          done()
         }).catch(error => console.log(error))
       })
     })
