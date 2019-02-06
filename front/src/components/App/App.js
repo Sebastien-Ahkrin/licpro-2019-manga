@@ -1,13 +1,22 @@
 import React, { Component } from 'react'
-import { List } from './../List'
 import './App.css'
+
+import Default from './../Default/Default'
+import NoMatch from './../NoMatch/NoMatch'
+
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 
 class App extends Component {
 
   render() {
     return (
       <div className="App">
-        <List/>
+        <Router>
+          <Switch>
+            <Route exact path='/' component={ Default } />
+            <Route component={ NoMatch } />
+          </Switch>
+        </Router>
       </div>
     )
   }
