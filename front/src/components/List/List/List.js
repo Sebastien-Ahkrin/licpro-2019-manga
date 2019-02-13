@@ -41,7 +41,7 @@ class List extends Component {
               <th scope='col'>Saison</th>
               <th scope='col'>Episode</th>
               <th scope='col'>Note</th>
-              <th scope='col'></th>
+              <th scope='col'>Actions</th>
             </tr>
           </thead>
           <tbody>
