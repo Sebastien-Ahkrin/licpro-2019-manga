@@ -17,18 +17,12 @@ How to run the tests
 How to run the back
 ------------------
 
-Go to the 'back' folder
-```
-npm run start
-```
+Go to the ``back`` folder and run ``npm run start``
 
 How to run the front
 ------------------
 
-Go to the 'front' folder
-```
-npm run start
-```
+Go to the ``/front`` folder and run ``npm run start``
 
 # [ Specs ]
 
