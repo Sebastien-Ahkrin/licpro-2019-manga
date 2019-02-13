@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import { List } from './../List/'
+import { Form } from './../Form/'
 
 class Default extends Component {
 
@@ -8,11 +9,11 @@ class Default extends Component {
     return (
       <div className="Default">
         <div className="row">
-          <div class="col-md-8">
+          <div className="col-md-8">
             <List/>
           </div>
-          <div class="col-md-4">
-
+          <div className="col-md-4">
+            <Form/>
           </div>
         </div>
       </div>
