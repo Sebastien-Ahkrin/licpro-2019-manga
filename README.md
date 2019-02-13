@@ -18,13 +18,17 @@ How to run the back
 ------------------
 
 Go to the 'back' folder
-    npm run start
+```
+npm run start
+```
 
 How to run the front
 ------------------
 
-Got to the 'front' folder
-    npm run start
+Go to the 'front' folder
+```
+npm run start
+```
 
 # [ Specs ]
 
