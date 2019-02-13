@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import './App.css'
-
 import Default from './../Default/Default'
 import NoMatch from './../NoMatch/NoMatch'
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 
-class App extends Component {
+import './App.css'
+
+export default class App extends Component {
 
   render() {
     return (
@@ -22,5 +22,3 @@ class App extends Component {
   }
 
 }
-
-export default App
