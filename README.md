@@ -14,11 +14,17 @@ How to run the tests
     npm run test
 
 
-How to run the API
+How to run the back
 ------------------
 
+Go to the 'back' folder
     npm run start
 
+How to run the front
+------------------
+
+Got to the 'front' folder
+    npm run start
 
 # [ Specs ]
 
