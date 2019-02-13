@@ -14,7 +14,7 @@ class ListItem extends Component {
         <td>{ season }</td>
         <td>{ ep }</td>
         <td>{ episode.grade }</td>
-        <td><span className='btn btn-primary' onClick={ () => callback() }>x</span></td>
+        <td><span className='btn btn-secondary' onClick={ () => callback() }>x</span></td>
       </tr>
     )
   }
