@@ -34,7 +34,7 @@ class List extends Component {
     
     return (
       <div className='List'>
-        <table className='table'>
+        <table className='table table-responsive-sm'>
           <thead>
             <tr>
               <th scope='col'>Série</th>
