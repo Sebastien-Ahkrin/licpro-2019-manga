@@ -9,9 +9,9 @@ class Form extends Component {
         super()
         this.state = {
             serie : '',
-            season : 0,
-            episode : 0,
-            grade : 0
+            season : '',
+            episode : '',
+            grade : ''
         }
 
         this.handleChange = this.handleChange.bind(this)
@@ -57,19 +57,19 @@ class Form extends Component {
                 <form onSubmit={ this.handleSubmit }>
                     <div className='form-group'>
                         <label htmlFor='serie'>Série</label>
-                        <input type='text' className='form-control' id='serie' placeholder='Série' value={ this.state.serie } onChange={ this.handleChange }></input>
+                        <input type='text' required='required' className='form-control' id='serie' placeholder='Série' value={ this.state.serie } onChange={ this.handleChange }></input>
                     </div>
                     <div className='form-group'>
                         <label htmlFor='season'>Saison</label>
-                        <input type='number' min='1' className='form-control' id='season' placeholder='Saison' value={ this.state.season } onChange={ this.handleChange }></input>
+                        <input type='number' required='required' min='1' className='form-control' id='season' placeholder='Saison' value={ this.state.season } onChange={ this.handleChange }></input>
                     </div>
                     <div className='form-group'>
                         <label htmlFor='episode'>Épisode</label>
-                        <input type='number' min='1' className='form-control' id='episode' placeholder='Épisode' value={ this.state.episode } onChange={ this.handleChange }></input>
+                        <input type='number' required='required' min='1' className='form-control' id='episode' placeholder='Épisode' value={ this.state.episode } onChange={ this.handleChange }></input>
                     </div>
                     <div className='form-group'>
                         <label htmlFor='grade'>Note</label>
-                        <input type='number' min='0' max='10' step='0.5' className='form-control' id='grade' placeholder='Note' value={ this.state.grade } onChange={ this.handleChange }></input>
+                        <input type='number' required='required' min='0' max='10' step='0.5' className='form-control' id='grade' placeholder='Note' value={ this.state.grade } onChange={ this.handleChange }></input>
                     </div>
                     <button type='submit' formMethod='post' className='btn btn-primary'>Watched</button>
                 </form>

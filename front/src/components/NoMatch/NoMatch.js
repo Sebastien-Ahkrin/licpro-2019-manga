@@ -6,7 +6,7 @@ class NoMatch extends Component {
     return (
       <div className='NoMatch'>
         <p>404 - Not Found</p>
-        <img src="/images/cofee.jpg"/>
+        <img alt="Coffee" src="/images/coffee.jpg"/>
       </div>
     )
   }

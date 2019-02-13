@@ -8,12 +8,14 @@ class Default extends Component {
   render() {
     return (
       <div className="Default">
-        <div className="row">
-          <div className="col-md-8">
-            <List/>
-          </div>
-          <div className="col-md-4">
-            <Form/>
+        <div className='container-fluid'>
+          <div className="row">
+            <div className="col-md-8">
+              <List/>
+            </div>
+            <div className="col-md-4">
+              <Form/>
+            </div>
           </div>
         </div>
       </div>
