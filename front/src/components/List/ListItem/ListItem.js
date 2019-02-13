@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import './ListItem.css'
+import '@fortawesome/fontawesome-free/css/all.min.css'
 
 class ListItem extends Component {
 
@@ -14,7 +15,10 @@ class ListItem extends Component {
         <td>{ season }</td>
         <td>{ ep }</td>
         <td>{ episode.grade }</td>
-        <td><span className='btn btn-secondary' onClick={ () => callback() }>x</span></td>
+        <td>
+          <i class="btn btn-primary fas fa-edit" onClick={ () => callback() }></i>
+          <i class="btn btn-primary far fa-times-circle" onClick={ () => callback() }></i>
+        </td>
       </tr>
     )
   }
