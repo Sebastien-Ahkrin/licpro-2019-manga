@@ -1,39 +1,20 @@
-import React, { Component } from 'react'
-import axios from 'axios'
+import React, { Component, Fragment } from 'react'
 
-import { api } from '../../../config'
 import { ListItem } from '../'
+import { ActionContext } from './../../../context'
 
 import './List.css'
 
 class List extends Component {
 
   constructor () {
-    super()
-    this.state = { episodes: '' }
-    this.delete.bind(this)
-  }
-
-  componentDidMount () {
-    axios.get(`${ api }/episodes`).then(({ data }) => {
-      this.setState(() => ({ 'episodes': data }))
-    }).catch(error => {
-      this.setState(() => ({ error }))
-    })
-  }
-
-  delete (id) {
-    axios.delete(`${ api }/episodes/${ id }`).then(({ data }) => {
-      this.setState(({ episodes }) => ({ episodes: episodes.filter((episode) => episode.id !== id) }))
-    }).catch(console.error)
+    this.setState({ name: 'List', state: 'Running' })
   }
 
   render () {
-    if(this.state.error) return (<div className='error'>Error: { this.state.error.message }</div>)
-    if(this.state.episodes === '') return (<div></div>)
-    
+    const { episodes } = this.props
     return (
-      <div className='List'>
+      <ActionContext.Provider value={ this.state }>
         <table className='table table-responsive-sm'>
           <thead>
             <tr>
@@ -45,10 +26,10 @@ class List extends Component {
             </tr>
           </thead>
           <tbody>
-            { this.state.episodes.map(episode => (<ListItem key={ episode.id } episode={ episode } callback={ () => this.delete(episode.id) }/>)) } 
+            { episodes.map(episode => (<ListItem key={ episode.id } episode={ episode }/>)) } 
           </tbody> 
         </table>
-      </div>
+      </ActionContext.Provider>
     )
   }
 
