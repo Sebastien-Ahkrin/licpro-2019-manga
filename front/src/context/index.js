@@ -1,9 +1,9 @@
 import { createContext } from 'react'
 
-import { remove } from './../actions'
+import { remove, get } from './../actions'
 
 export const ActionContext = createContext({
   name: 'ActionContext',
   state: '',
-  actions: { remove }
+  actions: { remove, get }
 }) 
