@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
+
 import Default from './../Default/Default'
 import NoMatch from './../NoMatch/NoMatch'
 
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 
 import './App.css'
 
