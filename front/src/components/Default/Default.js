@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import { ActionContext } from './../../context'
-import { get, remove } from './../../actions'
+import { add, remove, get } from './../../actions'
 
 import { List } from './../List/'
 import { Form } from './../Form/'
@@ -30,16 +30,21 @@ class Default extends Component {
     if(this.state.error) return (<div className='error'>Error: { this.state.error.message }</div>)
     if(this.state.episodes === '') return (<div></div>)
 
-    const values = {
+    const value = {
       actions: {
-        get: () => get(),
-        remove: () => remove()
+        remove: (id) => {
+          remove(id)
+          this.setState({ 'episodes':  this.state.episodes.filter(episode => episode.id !== id)})
+        },
+        add: (data) => {
+          add(data).then(_ => { this.getValues() })
+        }
       },
       state: this.state
     }
 
     return (
-      <ActionContext.Provider value={ values }>
+      <ActionContext.Provider value={ value }>
         <div className="Default">
           <div className='container-fluid'>
             <div className="row">
