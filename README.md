@@ -24,6 +24,8 @@ How to run the front
 
 Go to the ``/front`` folder and run ``npm run start``
 
+Don't forget ro run npm install command
+
 # [ Specs ]
 
 ## Structure
