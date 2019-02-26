@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import { ActionContext } from './../../context'
-import { add, remove, get } from './../../actions'
+import { add, remove, get, update } from './../../actions'
 
 import { List } from './../List/'
 import { Form } from './../Form/'
@@ -38,6 +38,9 @@ class Default extends Component {
         },
         add: (data) => {
           add(data).then(_ => { this.getValues() })
+        },
+        update: (id, data) => {
+          update(id, data).then(_ => { this.getValues() })
         }
       },
       state: this.state
@@ -45,6 +48,7 @@ class Default extends Component {
 
     return (
       <ActionContext.Provider value={ value }>
+      { console.log(value) }
         <div className="Default">
           <div className='container-fluid'>
             <div className="row">
