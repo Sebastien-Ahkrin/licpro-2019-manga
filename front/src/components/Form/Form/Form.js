@@ -23,6 +23,7 @@ class Form extends Component {
       <ActionContext.Consumer>
         { value => (
           <div>
+            <input type='hidden' id='uuid' value=''></input>
             <div className="form-group">
               <label htmlFor='serie' className='label-form'>Série</label>
               <input type='text' required='required' className='form-control' id='serie' placeholder='Série'></input> 
@@ -39,11 +40,30 @@ class Form extends Component {
               <label htmlFor='grade' className='label-form'>Note</label>
               <input type='number' required='required' min='0' max='10' step='0.5' className='form-control' id='grade' placeholder='Note'></input>
             </div>
-            <button className='btn btn-primary' id='watched-btn' onClick={ () => this.onClick(value) }>Watched</button>
+            <button id='watched' className='btn btn-primary' onClick={ () => this.onClick(value) }>Watched</button>
+            <button id='update' className='disabled btn btn-primary' onClick={ () => this.onUpdate(value) }>Update</button>
           </div>
         ) }
       </ActionContext.Consumer>
     )
+  }
+
+  onUpdate(consumer) {
+    const { value: uuid } = document.getElementById('uuid')
+    const { value: serie } = document.getElementById('serie')
+    const { value: season } = document.getElementById('season')
+    const { value: episode } = document.getElementById('episode')
+    const { value: grade } = document.getElementById('grade')
+
+
+    consumer.actions.update(uuid, { 
+      name: serie,
+      grade: grade,
+      episode: episode,
+      code: `S${ season }E${ episode }`,
+      id: uuid
+    })
+
   }
 
   onClick (consumer) {
