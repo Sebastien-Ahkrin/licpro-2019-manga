@@ -5,7 +5,7 @@ import {
   useContext,
   useReducer,
 } from "react";
-import { add } from "../actions";
+import { add, remove } from "../actions";
 
 export interface Episode {
   name: string;
@@ -21,7 +21,8 @@ export type ActionType<Action, Payload = void> = Payload extends void
 
 type AppActions =
   | ActionType<"ADD_EPISODE", { episode: Episode }>
-  | ActionType<"LOAD_EPISODES", Array<Episode>>;
+  | ActionType<"LOAD_EPISODES", Array<Episode>>
+  | ActionType<"DELETE_EPISODE", string>;
 
 type AppDispatch = Dispatch<AppActions>;
 
@@ -52,6 +53,11 @@ function reducer(previous: AppState, actions: AppActions): AppState {
     }
     case "LOAD_EPISODES": {
       return { episodes: actions.payload };
+    }
+    case "DELETE_EPISODE": {
+      const episodes = previous.episodes;
+      remove(actions.payload);
+      return { episodes: episodes.filter((ep) => ep.id !== actions.payload) };
     }
     default:
       throw new Error("Not implemented yet");
